@@ -30,7 +30,7 @@ apt install git
 cd /root
 ```
 ```bash
-git clone https://github.com/cleitonme/izingpro.bayles.install.git izinginstalador
+git clone https://github.com/msoliveira/izing-baleys.git izinginstalador
 ```
 ```bash
 sudo chmod +x ./izinginstalador/izing
@@ -111,12 +111,3 @@ docker container restart portainer
 
 Depois acesse novamente url http://seuip:9000/
 
-## Recomendação de VPS boa e barata
-
--  [Powerful cloud VPS & Web hosting.](https://control.peramix.com/?affid=58)
-
-## Consultoria particular
-
-Para consultoria particular chamar (será cobrado por isso) 48 999416725 
-
-Versão api em bayles
