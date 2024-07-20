@@ -161,7 +161,7 @@ system_update() {
   sudo ufw allow 3000/tcp
   sudo ufw allow 80/tcp
   sudo ufw allow 9000/tcp
- EOF
+EOF
 
   sleep 2
 }
