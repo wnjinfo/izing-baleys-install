@@ -3,3 +3,4 @@ pg_pass=t3W41sUGEP2MUSGf
 redis_pass=Gxy0tspzlQlgycBb
 rabbit_pass=moovdseKimsUKdGa
 deploy_email=mauro@elevetecnologia.com.br
+ipservidorubuntu=192.168.1.10
