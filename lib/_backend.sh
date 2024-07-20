@@ -67,27 +67,13 @@ backend_set_env() {
 
   sleep 2
 
-  # ensure idempotency
-  backend_url=$(echo "${backend_url/https:\/\/}")
-  backend_url=${backend_url%%/*}
-  backend_url=https://$backend_url
+  sudo su - deploy << EOF
+  cat <<[-]EOF > /home/deploy/izing.io/backend/.env
+NODE_ENV=dev
+BACKEND_URL=http://${ipservidorubuntu}
+FRONTEND_URL=http://${ipservidorubuntu}:4000
 
-  # ensure idempotency
-  frontend_url=$(echo "${frontend_url/https:\/\/}")
-  frontend_url=${frontend_url%%/*}
-  frontend_url=https://$frontend_url
-  
-  jwt_secret=$(openssl rand -base64 32)
-  jwt_refresh_secret=$(openssl rand -base64 32)
-
-sudo su - deploy << EOF
-  cat <<[-]EOF > /home/deploy/izing/backend/.env
-NODE_ENV=
-BACKEND_URL=${backend_url}
-FRONTEND_URL=${frontend_url}
-ADMIN_DOMAIN=izing.io
-
-PROXY_PORT=443
+PROXY_PORT=3000
 PORT=3000
 
 # conexão com o banco de dados
@@ -242,46 +228,6 @@ backend_start_pm2() {
   cd /home/deploy/izing/backend
   pm2 start dist/server.js --name izing-backend
   pm2 save
-EOF
-
-  sleep 2
-}
-
-#######################################
-# updates frontend code
-# Arguments:
-#   None
-#######################################
-backend_nginx_setup() {
-  print_banner
-  printf "${WHITE} 💻 Configurando nginx (backend)...${GRAY_LIGHT}"
-  printf "\n\n"
-
-  sleep 2
-
-  backend_hostname=$(echo "${backend_url/https:\/\/}")
-
-sudo su - root << EOF
-
-cat > /etc/nginx/sites-available/izing-backend << 'END'
-server {
-  server_name $backend_hostname;
-  
-  location / {
-    proxy_pass http://127.0.0.1:3000;
-    proxy_http_version 1.1;
-    proxy_set_header Upgrade \$http_upgrade;
-    proxy_set_header Connection 'upgrade';
-    proxy_set_header Host \$host;
-    proxy_set_header X-Real-IP \$remote_addr;
-    proxy_set_header X-Forwarded-Proto \$scheme;
-    proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
-    proxy_cache_bypass \$http_upgrade;
-  }
-}
-END
-
-ln -s /etc/nginx/sites-available/izing-backend /etc/nginx/sites-enabled
 EOF
 
   sleep 2
