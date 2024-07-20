@@ -115,7 +115,7 @@ system_unzip_izing() {
   sleep 2
 
   sudo su - deploy <<EOF
-  git clone https://github.com/msoliveira/izing-baleys.git /home/deploy/izing
+  git clone ${repositorio} /home/deploy/izing
 EOF
 
   sleep 2
@@ -158,9 +158,10 @@ system_update() {
   sudo su - root <<EOF
   apt -y update && apt -y upgrade
   apt autoremove -y
-  sudo ufw allow 443/tcp
+  sudo ufw allow 3000/tcp
   sudo ufw allow 80/tcp
-EOF
+  sudo ufw allow 9000/tcp
+ EOF
 
   sleep 2
 }
@@ -528,7 +529,7 @@ system_success() {
 
 echo $deploy_password > /root/senhadeploy
 
-  print_banner
+print_banner
   printf "${GREEN} 💻 Instalação concluída com Sucesso...${NC}"
   printf "${CYAN_LIGHT}";
   printf "\n\n"
@@ -537,13 +538,13 @@ echo $deploy_password > /root/senhadeploy
   printf "\n"
   printf "Senha: 123456"
   printf "\n"
-  printf "URL front: https://$frontend_domain"
+  printf "URL front: http://$ipservidorubuntu:4000"
   printf "\n"
-  printf "URL back: https://$backend_domain"
+  printf "URL back: http://$ipservidorubuntu:3000"
   printf "\n"
-  printf "Acesso ao Portainer: http://$frontend_domain:9000"
+  printf "Acesso ao Portainer: http://$ipservidorubuntu:9000"
   printf "\n"
-  printf "Senha Usuario deploy: $deploy_password"
+  printf "Senha Usuario Deploy: $deploy_password"
   printf "\n"
   printf "Usuario do Banco de Dados: izing"
   printf "\n"
@@ -552,8 +553,6 @@ echo $deploy_password > /root/senhadeploy
   printf "Senha do Banco de Dados: $pg_pass"
   printf "\n"
   printf "Senha do Redis: $redis_pass"
-  printf "\n"
-  printf "Senha do Rabbit: $rabbit_pass"
   printf "\n"
   printf "${NC}";
 
