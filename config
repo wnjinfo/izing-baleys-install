@@ -2,5 +2,5 @@ deploy_password=W9jcN0sVC7A9XR6p
 pg_pass=t3W41sUGEP2MUSGf
 redis_pass=Gxy0tspzlQlgycBb
 rabbit_pass=moovdseKimsUKdGa
-deploy_email=mauro@elevetecnologia.com.br
+repositorio=https://github.com/msoliveira/izing-baleys.git
 ipservidorubuntu=192.168.1.10
