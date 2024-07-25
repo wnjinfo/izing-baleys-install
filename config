@@ -2,5 +2,5 @@ deploy_password=123456
 pg_pass=t3W41sUGEP2MUSGf
 redis_pass=Gxy0tspzlQlgycBb
 rabbit_pass=moovdseKimsUKdGa
-repositorio=https://github.com/msoliveira/izing-baleys.git
+repositorio=https://github.com/wnjinfo/izing-baleys.git
 ipservidorubuntu=192.168.2.8
