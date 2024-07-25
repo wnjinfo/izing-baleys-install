@@ -10,19 +10,55 @@ Ubuntu 20 com minimo 8GB memoria
 
 https://dnschecker.org/
 
-## RODAR OS COMANDOS ABAIXO PARA INSTALAR
+## ACESSO ##
+Front:
+```bash
+http://seuipinterno:4000
+```
+
+Back:
+```bash
+http://seuipinterno:3000
+```
+
+Usuario:
+```bash
+admin@izing.io
+```
+
+Senha:
+```bash
+123456
+```
+
+## RODAR OS COMANDOS ABAIXO ##
 
 para evitar erros recomendados atualizar sistema e apos atualizar reniciar para evitar erros
 
+Primeiro crie senha para o sudo
+```bash
+sudo passwd root
+```
+
+Depois logar como sudo
+```bash
+sudo su
+```
+
+Atualizar sistema
 ```bash
 apt -y update && apt -y upgrade
 ```
+
+Reiniciar
 ```bash
 reboot
 ```
  
 Depois reniciar seguir com a instalacao
-
+```bash
+sudo su
+```
 ```bash
 apt install git
 ```
@@ -53,6 +89,12 @@ cd ./izinginstalador
 ```bash
 sudo ./izing
 ```
+
+
+## Problemas conexão whatsapp? ##
+
+Tente atualizar o Conector WWebJS whatsapp.js
+
 
 ## Alterar Frontend
 
@@ -101,6 +143,13 @@ docker exec -u root postgresql bash -c "chown -R postgres:postgres /var/lib/post
 ```bash
 docker container restart postgresql
 ```
+
+
+## Problemas enviar audios e noticações
+
+Isso porque você não possui certificado quando roda localmente consideram a conexão como insegura e bloqueiam o microfone.
+
+Você consegue resolver isto, acessando o link dentro do navegador Chrome; chrome://flags/#unsafely-treat-insecure-origin-as-secure e inserindo o ip com porta do seu frontend e backend.
 
 ## Acesso Portainer gerar senha
 "Your Portainer instance timed out for security purposes. To re-enable your Portainer instance, you will need to restart Portainer."
