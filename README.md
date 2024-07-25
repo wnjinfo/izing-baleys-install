@@ -30,7 +30,7 @@ apt install git
 cd /root
 ```
 ```bash
-git clone https://github.com/msoliveira/izing-baleys-install.git izinginstalador
+git clone https://github.com/wnjinfo/izing-baleys-install.git izinginstalador
 ```
 ```bash
 sudo chmod +x ./izinginstalador/izing
