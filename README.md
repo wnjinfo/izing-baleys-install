@@ -68,6 +68,10 @@ cd /root
 ```bash
 git clone https://github.com/wnjinfo/izing-baleys-install.git izinginstalador
 ```
+Editar dados com seus dados, com vim para salvar aperta ESC, depois wq! e de enter.
+```bash
+vim ./izinginstalador/config
+```
 ```bash
 sudo chmod +x ./izinginstalador/izing
 ```
